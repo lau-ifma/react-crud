@@ -1,7 +1,15 @@
-
-import './App.css'
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function App() {
+  const backend_url = '//localhost:8080/users'
+  useEffect(() => {
+    axios.get(backend_url)
+    .then(res => setUsers(res.data))
+    .catch(error => console.log(error))
+  }, []);
+  const [users, setUsers] = useState([]);
+
   return (
     <>
     <h1 className='text-2xl text-center'>Gerenciamento de Usuarios</h1>
@@ -20,20 +28,23 @@ function App() {
           <th>Acoes</th>
         </thead>
 
-        <tbody className='bg-gray-100 text-center'>
+        <tbody className='bg-gray-100 text-center users'>
           <tr>
             <td>1</td>
             <td>Raimundo</td>
             <td>Vigia</td>
             <td>Vigiar escola</td>
           </tr>
-
-          <tr>
-            <td>2</td>
-            <td>Francisco</td>
-            <td>Professor</td>
-            <td>Dar aulas</td>
-          </tr>
+          {users.map( user => {
+            return(
+            <tr>
+              <td>{user.id}</td>
+              <td>{user.name}</td>
+              <td>{user.type}</td>
+              <td>Vigiar escola</td>
+            </tr>
+            )
+          })}
         </tbody>
 
       </table>
@@ -43,3 +54,4 @@ function App() {
 }
 
 export default App
+
