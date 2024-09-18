@@ -44,7 +44,8 @@ function App() {
               <th>ID</th>
               <th>Nome</th>
               <th>Tipo</th>
-              <th>Ações</th>
+              <th>Editar</th>
+              <th>Excluir</th>
             </tr>
           </thead>
 
@@ -53,9 +54,11 @@ function App() {
             <td>1</td>
             <td>Raimundo</td>
             <td>Vigia</td>
-            <td className="flex justify-around">
-              <FaEdit className="text-orange-500 text-xl hover:text-orange-700 mt-2"/>
-              <MdDelete className="text-red-500 text-xl hover:text-red-700 mt-2"/>
+            <td className="bg-gray-200">
+               <FaEdit className="text-orange-500 text-xl hover:text-orange-700 ml-[45%]"/>
+            </td>
+            <td className="bg-gray-200">
+               <MdDelete className="text-red-500 text-xl hover:text-red-700 ml-[45%]"/>
             </td>
           </tr>
 
