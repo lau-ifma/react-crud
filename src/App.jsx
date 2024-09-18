@@ -54,8 +54,8 @@ function App() {
             <td>Raimundo</td>
             <td>Vigia</td>
             <td className="flex justify-around">
-              <td> <FaEdit className="text-orange-500 text-xl hover:text-orange-700 mt-2"/></td>
-              <td> <MdDelete className="text-red-500 text-xl hover:text-red-700 mt-2"/></td>
+              <FaEdit className="text-orange-500 text-xl hover:text-orange-700 mt-2"/>
+              <MdDelete className="text-red-500 text-xl hover:text-red-700 mt-2"/>
             </td>
           </tr>
 
