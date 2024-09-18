@@ -80,13 +80,13 @@ function App() {
             <form >
               <div className="mb-4">
                 <label className="block text-gray-700">Nome</label>
-                <input type="text" name="name" onChange="" required
+                <input type="text" name="name" required
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-500"
                 />
               </div>
               <div className="mb-4">
                   <label className="block text-gray-700">Tipo</label>
-                  <input type="text" name="type" onChange="" required
+                  <input type="text" name="type" required
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-500"
                   />
               </div>
