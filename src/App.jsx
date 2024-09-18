@@ -3,6 +3,7 @@ import { MdDelete } from "react-icons/md";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 function App() {
   const backend_url = '//localhost:8080/users';
   const [users, setUsers] = useState([]);
@@ -13,6 +14,16 @@ function App() {
       .catch(error => console.log(error));
   }, []);
 
+  const [modal, setModal] = useState(false);
+
+  const OpenModal = () => {
+    setModal(!modal);
+  };
+
+  const CloseModal= () => {
+    setModal(false);
+  };
+
   return (
     <>
       <h1 className='text-2xl text-center'>Gerenciamento de Usuários</h1>
@@ -21,8 +32,8 @@ function App() {
         <div className='flex justify-end mb-2'>
           <button
             className='font-semibold bg-emerald-500 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg'
-          >
-            Criar novo
+            onClick={OpenModal}
+            > Criar novo
           </button>
         </div>
 
@@ -61,6 +72,42 @@ function App() {
           </tbody>
         </table>
       </div>
+
+      {modal && (
+        <div className="overlay fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+          <div className="bg-white p-5 rounded-lg w-[400px]">
+            <h2 className="text-xl mb-4 text-center">Criar Novo Usuário</h2>
+            <form >
+              <div className="mb-4">
+                <label className="block text-gray-700">Nome</label>
+                <input type="text" name="name" onChange="" required
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-500"
+                />
+              </div>
+              <div className="mb-4">
+                  <label className="block text-gray-700">Tipo</label>
+                  <input type="text" name="type" onChange="" required
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-500"
+                  />
+              </div>
+              <div className="flex justify-between">
+                  <button
+                    type="button" onClick={CloseModal}
+                    className="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded-md"
+                  >Cancelar
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="bg-emerald-500 hover:bg-emerald-700 text-white px-4 py-2 rounded-md"
+                    >Criar
+                  </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
     </>
   );
 }
