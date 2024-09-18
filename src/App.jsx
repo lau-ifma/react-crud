@@ -26,9 +26,10 @@ function App() {
 
   return (
     <>
-      <h1 className='text-2xl text-center'>Gerenciamento de Usuários</h1>
 
-      <div className='my-0 mx-auto mt-2 bg-gray-300 w-[600px] rounded-md flex-col items-center p-3'>
+      <h1 className='text-2xl text-center font-semibold flex justify-center max-md:text-xl'>Gerenciamento de Usuários</h1>
+
+      <div className='my-0 mx-auto mt-2 bg-gray-300 w-[600px] rounded-md flex-col items-center p-3 max-md:w-[95%]'>
         <div className='flex justify-end mb-2'>
           <button
             className='font-semibold bg-emerald-500 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg'
@@ -75,31 +76,31 @@ function App() {
 
       {modal && (
         <div className="overlay fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
-          <div className="bg-white p-5 rounded-lg w-[400px]">
-            <h2 className="text-xl mb-4 text-center">Criar Novo Usuário</h2>
+          <div className="bg-white p-5 rounded-lg w-[400px] max-md:w-[95%]">
+            <h2 className="text-xl mb-4 text-center font-semibold">Criar Novo Usuário</h2>
             <form >
               <div className="mb-4">
-                <label className="block text-gray-700">Nome</label>
+                <label className="block text-gray-700 font-medium">Nome</label>
                 <input type="text" name="name" required
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-500"
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                 />
               </div>
               <div className="mb-4">
-                  <label className="block text-gray-700">Tipo</label>
+                  <label className="block text-gray-700 font-medium">Tipo</label>
                   <input type="text" name="type" required
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-500"
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                   />
               </div>
               <div className="flex justify-between">
                   <button
                     type="button" onClick={CloseModal}
-                    className="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded-md"
+                    className="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded-md font-semibold"
                   >Cancelar
                   </button>
 
                   <button
                     type="submit"
-                    className="bg-emerald-500 hover:bg-emerald-700 text-white px-4 py-2 rounded-md"
+                    className="bg-emerald-500 hover:bg-emerald-700 text-white px-4 py-2 rounded-md font-semibold"
                     >Criar
                   </button>
               </div>
