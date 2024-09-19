@@ -58,11 +58,14 @@ function App() {
 
   return (
     <>
+     <body className={`bg-[url('https://img.freepik.com/vetores-gratis/papel-de-parede-tecnologico-futurista_79603-1093.jpg?t=st=1726745737~exp=1726749337~hmac=61a89d9dba3cc30829849f2317d380644f9c712c293f27c5df1f17319984e0e3&w=740')] bg-cover bg-center h-screen`}>
       <input type="text" hidden id="userIdToPut"/>
       <input type="text" hidden id="userNameToPut"/>
       <input type="text" hidden id="userTypeToPut"/>
-      <h1 className='text-2xl text-center font-semibold flex justify-center max-md:text-xl'>Gerenciamento de Usuários</h1>
-      <div className='my-0 mx-auto mt-2 bg-gray-300 w-[600px] rounded-md flex-col items-center p-3 max-md:w-[95%]'>
+      <h1 className='pt-[70px] text-3xl text-center font-semibold flex justify-center max-md:text-xl text-white'>Gerenciamento de Contatos</h1>
+      <div className='my-0 mx-auto mt-4  w-[600px] flex-col items-center p-3 max-md:w-[95%] text-center bg-black/30 backdrop-blur-lg rounded-lg
+      border-2 border-gray-400
+      '>
         <div className='flex justify-end mb-2'>
           <button
             className='font-semibold bg-emerald-500 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg'
@@ -71,7 +74,7 @@ function App() {
           </button>
         </div>
 
-        <table className='bg-gray-500 w-[100%] rounded-md'>
+        <table className='bg-gray-900 w-[100%] border'>
           <thead className='text-gray-200 h-[40px]'>
             <tr>
               <th>ID</th>
@@ -82,8 +85,7 @@ function App() {
             </tr>
           </thead>
 
-          <tbody className='bg-gray-100 text-center'>
-
+          <tbody className='bg-gray-600 text-center text-gray-200'>
             {users.map(user => (
               <tr key={user.id} className="h-[40px] border-b-2 border-gray-500">
                 <td>{user.id}</td>
@@ -102,18 +104,18 @@ function App() {
       </div>
 
       {modalEdit && (
-        <div className="overlay fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
-          <div className="bg-white p-5 rounded-lg w-[400px] max-md:w-[95%]">
-            <h2 className="text-xl mb-4 text-center font-semibold">Editar Usuário</h2>
+        <div className="overlay fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center">
+          <div className=" bg-black/20 backdrop-blur-lg p-5 border rounded-lg w-[400px] max-md:w-[95%]">
+            <h2 className="text-xl mb-4 text-center font-semibold text-gray-100">Editar Usuário</h2>
             <form >
               <div className="mb-4">
-                <label className="block text-gray-700 font-medium">Novo nome:</label>
-                <input type="text" name="name" id="name" defaultValue={document.getElementById("userNameToPut").value} required
+                <label className="block text-gray-200 font-medium">Novo nome:</label>
+                <input type="text" placeholder="Digite o nome" name="name" id="name" defaultValue={document.getElementById("userNameToPut").value} required
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                 />
               </div>
               <div className="mb-4">
-                  <label className="block text-gray-700 font-medium">Novo Telefone:</label>
+                  <label className="block text-gray-200 font-medium">Novo Telefone:</label>
                   <InputMask
                     mask="(99) 99999-9999"
                     name="type"
@@ -125,7 +127,7 @@ function App() {
               </div>
               <div className="flex justify-between">
                   <button type="button" onClick={CloseModalEdit}
-                    className="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded-md font-semibold"
+                    className="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded-md font-semibold"
                   >Cancelar
                   </button>
 
@@ -140,18 +142,18 @@ function App() {
       )}
 
       {modal && (
-        <div className="overlay fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
-          <div className="bg-white p-5 rounded-lg w-[400px] max-md:w-[95%]">
-            <h2 className="text-xl mb-4 text-center font-semibold">Criar Novo Usuário</h2>
+       <div className="overlay fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+         <div className=" bg-black/20 backdrop-blur-lg p-5 border rounded-lg w-[400px] max-md:w-[95%]">
+          <h2 className="text-xl mb-4 text-center font-semibold text-gray-100">Criar novo contato</h2>
             <form >
               <div className="mb-4">
-                <label className="block text-gray-700 font-medium">Nome</label>
-                <input type="text" name="name" id="name"
+                <label className="block text-gray-200 font-medium">Nome</label>
+                <input type="text" name="name" id="name" placeholder="Ex: João"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                 />
               </div>
               <div className="mb-4">
-                  <label className="block text-gray-700 font-medium">Telefone</label>
+                  <label className="block text-gray-200 font-medium">Telefone</label>
                   <InputMask
                     mask="(99) 99999-9999"
                     name="type"
@@ -163,7 +165,7 @@ function App() {
               <div className="flex justify-between">
                   <button
                     type="button" onClick={CloseModal}
-                    className="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded-md font-semibold"
+                    className="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded-md font-semibold"
                   >Cancelar
                   </button>
 
@@ -178,7 +180,7 @@ function App() {
           </div>
         </div>
       )}
-
+    </body>
     </>
   );
 }
