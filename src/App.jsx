@@ -2,6 +2,8 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import InputMask from 'react-input-mask';
+
 
 function App() {
   const backend_url = '//localhost:8080/users';
@@ -74,7 +76,7 @@ function App() {
             <tr>
               <th>ID</th>
               <th>Nome</th>
-              <th>Tipo</th>
+              <th>Telefone</th>
               <th>Editar</th>
               <th>Excluir</th>
             </tr>
@@ -111,9 +113,14 @@ function App() {
                 />
               </div>
               <div className="mb-4">
-                  <label className="block text-gray-700 font-medium">Novo tipo:</label>
-                  <input type="text" name="type" id="type" defaultValue={document.getElementById("userTypeToPut").value} required
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
+                  <label className="block text-gray-700 font-medium">Novo Telefone:</label>
+                  <InputMask
+                    mask="(99) 99999-9999"
+                    name="type"
+                    id="type"
+                    placeholder="Digite o telefone"
+                    defaultValue={document.getElementById("userTypeToPut").value}
+                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                   />
               </div>
               <div className="flex justify-between">
@@ -144,9 +151,13 @@ function App() {
                 />
               </div>
               <div className="mb-4">
-                  <label className="block text-gray-700 font-medium">Tipo</label>
-                  <input type="text" name="type" id="type"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
+                  <label className="block text-gray-700 font-medium">Telefone</label>
+                  <InputMask
+                    mask="(99) 99999-9999"
+                    name="type"
+                    id="type"
+                    placeholder="Digite o telefone"
+                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                   />
               </div>
               <div className="flex justify-between">
