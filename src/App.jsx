@@ -86,6 +86,7 @@ function App() {
           </thead>
 
           <tbody className='bg-gray-600 text-center text-gray-200'>
+            {users.length === 0 && ( <th colSpan={5}>Sem contatos cadastrados.</th>)}
             {users.map(user => (
               <tr key={user.id} className="h-[40px] border-b-2 border-gray-500">
                 <td>{user.id}</td>
