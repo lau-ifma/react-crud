@@ -3,7 +3,6 @@ import { MdDelete } from "react-icons/md";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
 function App() {
   const backend_url = '//localhost:8080/users';
   const [users, setUsers] = useState([]);
@@ -13,6 +12,13 @@ function App() {
       .then(res => setUsers(res.data))
       .catch(error => console.log(error));
   }, []);
+
+  function postAPI(){
+    axios.post(backend_url, {
+      name: document.getElementById("name").value,
+      type: document.getElementById("type").value
+    })
+  }
 
   const [modal, setModal] = useState(false);
 
@@ -67,9 +73,11 @@ function App() {
                 <td>{user.id}</td>
                 <td>{user.name}</td>
                 <td>{user.type}</td>
-                <td className="flex justify-around">
-                  <FaEdit className="text-orange-500 text-xl hover:text-orange-700 mt-2" />
-                  <MdDelete className="text-red-500 text-xl hover:text-red-700 mt-2" />
+                <td className="bg-gray-200">
+                  <FaEdit className="text-orange-500 text-xl hover:text-orange-700 ml-[45%]" />
+                </td>
+                <td className="bg-gray-200">
+                  <MdDelete className="text-red-500 text-xl hover:text-red-700 ml-[45%]" />
                 </td>
               </tr>
             ))}
@@ -84,13 +92,13 @@ function App() {
             <form >
               <div className="mb-4">
                 <label className="block text-gray-700 font-medium">Nome</label>
-                <input type="text" name="name" required
+                <input type="text" name="name" id="name" required
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                 />
               </div>
               <div className="mb-4">
                   <label className="block text-gray-700 font-medium">Tipo</label>
-                  <input type="text" name="type" required
+                  <input type="text" name="type" id="type" required
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                   />
               </div>
@@ -103,6 +111,7 @@ function App() {
 
                   <button
                     type="submit"
+                    onClick={postAPI}
                     className="bg-emerald-500 hover:bg-emerald-700 text-white px-4 py-2 rounded-md font-semibold"
                     >Criar
                   </button>
