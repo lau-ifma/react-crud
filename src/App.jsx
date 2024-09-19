@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const image_url = 'https://img.freepik.com/vetores-gratis/papel-de-parede-tecnologico-futurista_79603-1093.jpg?t=st=1726745737~exp=1726749337~hmac=61a89d9dba3cc30829849f2317d380644f9c712c293f27c5df1f17319984e0e3&w=740'
   const backend_url = '//localhost:8080/users';
   const [users, setUsers] = useState([]);
 
@@ -52,7 +51,7 @@ function App() {
 
   return (
     <>
-    <body className={`bg-[url('${image_url}')] bg-cover bg-center h-screen`}>
+    <body className={`bg-[url('https://img.freepik.com/vetores-gratis/papel-de-parede-tecnologico-futurista_79603-1093.jpg?t=st=1726745737~exp=1726749337~hmac=61a89d9dba3cc30829849f2317d380644f9c712c293f27c5df1f17319984e0e3&w=740')] bg-cover bg-center h-screen`}>
       <input type="text" hidden id="userIdToPut"/>
       <input type="text" hidden id="userNameToPut"/>
       <input type="text" hidden id="userTypeToPut"/>
