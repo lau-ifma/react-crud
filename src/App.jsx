@@ -20,6 +20,13 @@ function App() {
     })
   }
 
+  function putAPI(userId){
+    axios.put(backend_url+"/"+userId, {
+      name: document.getElementById("name").value,
+      type: document.getElementById("type").value
+    })
+  }
+
   function deleteUser(userId){
     axios.delete(backend_url+"/"+userId)
     window.location.reload();
@@ -34,8 +41,9 @@ function App() {
   };
 
   const [modalEdit, setModalEdit] = useState(false);
-  const OpenModalEdit = () => {
+  const OpenModalEdit = (userId) => {
     setModalEdit(!modalEdit);
+    document.getElementById("userIdToPut").value = userId
   };
   const CloseModalEdit= () => {
     setModalEdit(false);
@@ -43,6 +51,7 @@ function App() {
 
   return (
     <>
+      <input type="text" hidden id="userIdToPut"/>
       <h1 className='text-2xl text-center font-semibold flex justify-center max-md:text-xl'>Gerenciamento de Usuários</h1>
       <div className='my-0 mx-auto mt-2 bg-gray-300 w-[600px] rounded-md flex-col items-center p-3 max-md:w-[95%]'>
         <div className='flex justify-end mb-2'>
@@ -72,7 +81,7 @@ function App() {
                 <td>{user.name}</td>
                 <td>{user.type}</td>
                 <td className="bg-gray-200">
-                  <FaEdit onClick={OpenModalEdit} className="text-orange-500 text-xl hover:text-orange-700 ml-[45%]" />
+                  <FaEdit onClick={() => OpenModalEdit(user.id)} className="text-orange-500 text-xl hover:text-orange-700 ml-[45%]" />
                 </td>
                 <td className="bg-gray-200">
                   <MdDelete onClick={() => deleteUser(user.id)} className="text-red-500 text-xl hover:text-red-700 ml-[45%]" />
@@ -106,7 +115,7 @@ function App() {
                   >Cancelar
                   </button>
 
-                  <button type="submit" onClick={postAPI}
+                  <button type="submit" onClick={() => putAPI(document.getElementById("userIdToPut").value)}
                     className="bg-emerald-500 hover:bg-emerald-700 text-white px-4 py-2 rounded-md font-semibold"
                     >Atualizar
                   </button>
@@ -123,13 +132,13 @@ function App() {
             <form >
               <div className="mb-4">
                 <label className="block text-gray-700 font-medium">Nome</label>
-                <input type="text" name="name" id="name" required
+                <input type="text" name="name" id="name"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                 />
               </div>
               <div className="mb-4">
                   <label className="block text-gray-700 font-medium">Tipo</label>
-                  <input type="text" name="type" id="type" required
+                  <input type="text" name="type" id="type"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                   />
               </div>
