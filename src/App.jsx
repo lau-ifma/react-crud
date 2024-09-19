@@ -15,10 +15,14 @@ function App() {
       .catch(error => console.log(error));
   }, []);
 
-  function postAPI(){
+  function postAPI(event){
+    event.preventDefault();
     axios.post(backend_url, {
       name: document.getElementById("name").value,
       type: document.getElementById("type").value
+    }).then(() => {
+      setModal(false);
+      window.location.reload(); 
     })
   }
 
