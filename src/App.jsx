@@ -22,7 +22,7 @@ function App() {
       type: document.getElementById("type").value
     }).then(() => {
       setModal(false);
-      window.location.reload(); 
+      window.location.reload();
     })
   }
 
@@ -66,19 +66,19 @@ function App() {
       <input type="text" hidden id="userIdToPut"/>
       <input type="text" hidden id="userNameToPut"/>
       <input type="text" hidden id="userTypeToPut"/>
-      
+
       <section className="max-md:w-[100%]">
-        <h1 className=' max-md:pt-0 pt-[70px] text-3xl text-center font-semibold flex justify-center max-md:text-xl text-[#78da95]'>Gerenciamento de Contatos</h1>
+        <h1 className=' max-md:pt-0 pt-[0px] text-3xl text-center font-semibold flex justify-center max-md:text-xl text-[#78da95]'>Gerenciamento de Contatos</h1>
         <div className='my-0 mx-auto mt-4 w-[600px] flex-col items-center p-3 max-md:w-[95%] text-center bg-black/30 backdrop-blur-lg rounded-lg border-2 border-gray-400'>
             <div className='flex justify-end mb-2'>
               <button
                 className='font-semibold bg-emerald-500 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg'
                 onClick={OpenModal}
-                > Criar novo
+                >+ Adicionar
               </button>
             </div>
 
-          <table className='bg-gray-900 w-[100%] border'>
+          <table className='bg-gray-900 w-[100%] border max-md:text-xs'>
             <thead className='text-gray-200 h-[40px]'>
               <tr>
                 <th>ID</th>
@@ -178,7 +178,7 @@ function App() {
                       type="submit"
                       onClick={postAPI}
                       className="bg-emerald-500 hover:bg-emerald-700 text-white px-4 py-2 rounded-md font-semibold"
-                      >Criar
+                      >Salvar
                     </button>
                 </div>
               </form>
@@ -188,7 +188,7 @@ function App() {
       </section>
 
       <div className="max-lg:hidden">
-          <img className="w-[400px] max-lg:w-[310px] image-float" src="/img1.png" alt="foto" /> 
+          <img className="w-[400px] max-lg:w-[310px] image-float" src="/img1.png" alt="foto" />
       </div>
     </body>
     </>
