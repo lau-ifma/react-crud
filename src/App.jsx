@@ -20,6 +20,11 @@ function App() {
     })
   }
 
+  function deleteUser(userId){
+    axios.delete(backend_url+"/"+userId)
+    window.location.reload();
+  }
+
   const [modal, setModal] = useState(false);
 
   const OpenModal = () => {
@@ -77,7 +82,7 @@ function App() {
                   <FaEdit className="text-orange-500 text-xl hover:text-orange-700 ml-[45%]" />
                 </td>
                 <td className="bg-gray-200">
-                  <MdDelete className="text-red-500 text-xl hover:text-red-700 ml-[45%]" />
+                  <MdDelete onClick={() => deleteUser(user.id)} className="text-red-500 text-xl hover:text-red-700 ml-[45%]" />
                 </td>
               </tr>
             ))}
