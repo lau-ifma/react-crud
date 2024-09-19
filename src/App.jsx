@@ -41,9 +41,14 @@ function App() {
   };
 
   const [modalEdit, setModalEdit] = useState(false);
-  const OpenModalEdit = (userId) => {
+  const OpenModalEdit = (user) => {
     setModalEdit(!modalEdit);
+    const userId = user.id
+    const nameUser = user.name
+    const typeUser = user.type
     document.getElementById("userIdToPut").value = userId
+    document.getElementById("userNameToPut").value = nameUser
+    document.getElementById("userTypeToPut").value = typeUser
   };
   const CloseModalEdit= () => {
     setModalEdit(false);
@@ -52,6 +57,8 @@ function App() {
   return (
     <>
       <input type="text" hidden id="userIdToPut"/>
+      <input type="text" hidden id="userNameToPut"/>
+      <input type="text" hidden id="userTypeToPut"/>
       <h1 className='text-2xl text-center font-semibold flex justify-center max-md:text-xl'>Gerenciamento de Usuários</h1>
       <div className='my-0 mx-auto mt-2 bg-gray-300 w-[600px] rounded-md flex-col items-center p-3 max-md:w-[95%]'>
         <div className='flex justify-end mb-2'>
@@ -81,7 +88,7 @@ function App() {
                 <td>{user.name}</td>
                 <td>{user.type}</td>
                 <td className="bg-gray-200">
-                  <FaEdit onClick={() => OpenModalEdit(user.id)} className="text-orange-500 text-xl hover:text-orange-700 ml-[45%]" />
+                  <FaEdit onClick={() => OpenModalEdit(user)} className="text-orange-500 text-xl hover:text-orange-700 ml-[45%]" />
                 </td>
                 <td className="bg-gray-200">
                   <MdDelete onClick={() => deleteUser(user.id)} className="text-red-500 text-xl hover:text-red-700 ml-[45%]" />
@@ -99,13 +106,13 @@ function App() {
             <form >
               <div className="mb-4">
                 <label className="block text-gray-700 font-medium">Novo nome:</label>
-                <input type="text" name="name" id="name" required
+                <input type="text" name="name" id="name" defaultValue={document.getElementById("userNameToPut").value} required
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                 />
               </div>
               <div className="mb-4">
                   <label className="block text-gray-700 font-medium">Novo tipo:</label>
-                  <input type="text" name="type" id="type" required
+                  <input type="text" name="type" id="type" defaultValue={document.getElementById("userTypeToPut").value} required
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                   />
               </div>
